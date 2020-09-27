@@ -1,0 +1,5 @@
+{
+   "file": "./tests/data/template.yaml",
+   "endpoint": "http://localhost:4567",
+   "region": "us-east-1"
+}
