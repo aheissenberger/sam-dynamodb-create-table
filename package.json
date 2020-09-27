@@ -1,16 +1,17 @@
 {
   "name": "sam-dyamodb-create-table",
-  "description": "create dynamoDB tables based on an existing sam template.yaml file.",
+  "description": "CLI tool to create dynamoDB tables based on an existing sam template.yaml file.",
   "author": "Andreas Heissenberger",
   "keywords": [
     "dynamodb",
     "dynamodb-local",
-		"dynalite",
+    "dynalite",
+    "cli",
 		"aws",
 		"sam",
 		"JavaScript"
 	],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./lib/index.js",
   "bin": {
     "sam-dyamodb-create-table": "./bin/index.js"
