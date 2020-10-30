@@ -12,9 +12,6 @@ const defautlConfiguration = {
     region: 'us-east-1',
 }
 
-
-
-
 export async function createTableFromSAMtemplate(config) {
     let ddb = new AWS.DynamoDB({ endpoint: config.endpoint, region: config.region })
 
@@ -25,7 +22,7 @@ export async function createTableFromSAMtemplate(config) {
 
         for (let index = 0; index < dynamoDBdefinitions.length; index++) {
             const tableDef = dynamoDBdefinitions[index];
-            const tableName = tableDef[0];
+            const tableName = tableDef[1].Properties.TableName ?? tableDef[0];
             process.stdout.write(`* create Table "${tableName}" ... `)
             await createTable(tableName, tableDef[1].Properties, config.debug)
         }
