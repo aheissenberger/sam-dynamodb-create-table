@@ -1,5 +1,5 @@
 {
-  "name": "sam-dyamodb-create-table",
+  "name": "@technipfmc/sam-dyamodb-create-table",
   "description": "CLI tool to create dynamoDB tables based on an existing sam template.yaml file.",
   "author": "Andreas Heissenberger",
   "keywords": [
@@ -7,16 +7,19 @@
     "dynamodb-local",
     "dynalite",
     "cli",
-		"aws",
-		"sam",
-		"JavaScript"
-	],
-  "version": "1.0.1",
+    "aws",
+    "sam",
+    "JavaScript"
+  ],
+  "version": "1.0.2",
   "main": "./lib/index.js",
   "bin": {
     "sam-dyamodb-create-table": "./bin/index.js"
   },
   "license": "MIT",
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
     "build": "rollup -c",
     "prepare": "npm run build"
@@ -34,12 +37,12 @@
   "files": [
     "bin",
     "lib",
-		"README.md"
+    "README.md"
   ],
   "bugs": "https://github.com/aheissenberger/sam-dyamodb-create-table/issues",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/aheissenberger/sam-dyamodb-create-table.git"
-	},
-	"private": false
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aheissenberger/sam-dyamodb-create-table.git"
+  },
+  "private": false
 }
