@@ -1,0 +1,60 @@
+{
+    "Type": "AWS::DynamoDB::Table",
+    "Properties": {
+        "TableName": "EventStore",
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "aggregateId",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "version",
+                "AttributeType": "N"
+            },
+            {
+                "AttributeName": "isInitialEvent",
+                "AttributeType": "N"
+            },
+            {
+                "AttributeName": "timestamp",
+                "AttributeType": "S"
+            }
+        ],
+        "KeySchema": [
+            {
+                "AttributeName": "aggregateId",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "version",
+                "KeyType": "RANGE"
+            }
+        ],
+        "GlobalSecondaryIndexes": [
+            {
+                "IndexName": "initialEvents",
+                "KeySchema": [
+                    {
+                        "AttributeName": "isInitialEvent",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "timestamp",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "KEYS_ONLY"
+                },
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": 1,
+                    "WriteCapacityUnits": 1
+                }
+            }
+        ],
+        "ProvisionedThroughput": {
+            "ReadCapacityUnits": 1,
+            "WriteCapacityUnits": 1
+        }
+    }
+}
