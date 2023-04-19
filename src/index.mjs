@@ -25,7 +25,7 @@ export async function createTableFromSAMtemplate(config) {
 
         for (let index = 0; index < dynamoDBdefinitions.length; index++) {
             const tableDef = dynamoDBdefinitions[index];
-            const tableName = tableDef[0];
+            const tableName = tableDef[1].Properties.TableName ?? tableDef[0];
             process.stdout.write(`* create Table "${tableName}" ... `)
             await createTable(tableName, tableDef[1].Properties, config.debug)
         }
