@@ -59,6 +59,13 @@ We use [SemVer](http://semver.org/) for versioning.
 * **Andreas Heissenberger** - *Initial work* - [Github](https://github.com/aheissenberger) | [Heissenberger Laboratory](https://www.heissenberger.at)
 
 
+## Notes
+
+similar to this is possible with the aws cli tool:
+```sh
+aws dynamodb create-table --cli-input-json '{"TableName":"test2","AttributeDefinitions":[{"AttributeName":"aggregateId","AttributeType":"S"},{"AttributeName":"version","AttributeType":"N"},{"AttributeName":"isInitialEvent","AttributeType":"N"},{"AttributeName":"timestamp","AttributeType":"S"}],"KeySchema":[{"AttributeName":"aggregateId","KeyType":"HASH"},{"AttributeName":"version","KeyType":"RANGE"}],"GlobalSecondaryIndexes":[{"IndexName":"initialEvents","KeySchema":[{"AttributeName":"isInitialEvent","KeyType":"HASH"},{"AttributeName":"timestamp","KeyType":"RANGE"}],"Projection":{"ProjectionType":"KEYS_ONLY"},"ProvisionedThroughput":{"ReadCapacityUnits":1,"WriteCapacityUnits":1}}],"ProvisionedThroughput":{"ReadCapacityUnits":1,"WriteCapacityUnits":1}}' --endpoint-url http://localhost:8000
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
