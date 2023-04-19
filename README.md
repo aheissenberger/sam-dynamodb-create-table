@@ -8,22 +8,22 @@ If the Table exists it will fail with `ERROR: ResourceInUseException`.
 
 if you locally started dynamodb on port 8000:
 
-`npx sam-dyamodb-create-table -e http://localhost:8000 -f template.yaml`
+`npx sam-dynamodb-create-table -e http://localhost:8000 -f template.yaml`
 
 ## Install
 
 *global install*
 
-`npm i -g sam-dyamodb-create-table`
+`npm i -g sam-dynamodb-create-table`
 
 prefered way to use is without installation with `npx`!
 
 ## Usage
 
-`sam-dyamodb-create-table --help`
+`sam-dynamodb-create-table --help`
 
 ```
-Usage: sam-dyamodb-create-table [options]
+Usage: sam-dynamodb-create-table [options]
 
 Options:
   -d, --debug                     output extra debugging information
@@ -32,6 +32,7 @@ Options:
   -e, --endpoint <url>            dynamoDB endpoint url (default: http://localhost:8000)
   -r, --region <region>           AWS region (default: us-east-1)
   --config-template               output JSON config template (default: false)
+  --table-name                    Table name if not provided by the template.yml or template.json
   -h, --help                      display help for command
 ```
 
@@ -42,6 +43,16 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. 
+
+## Changes
+
+* **2023-04-18
+  - upgrade to AWS-SDK Version 3
+  - add support for Cloudformation files
+  - add some transformations to fix errors when deployed to a local dynamoDB server
+    - fix: set ProvisionedThroughput to 1/1
+    - fix: set GlobalSecondaryIndexes / ProvisionedThroughput to 1/1
+    - fix: convert GlobalSecondaryIndexes.Projection from string to object
 
 ## Authors
 
